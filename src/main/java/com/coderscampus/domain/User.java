@@ -1,19 +1,10 @@
-package com.coderscampus.assignment13.domain;
+package com.coderscampus.domain;
+
+import jakarta.persistence.*;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
 
 @Entity // Class name = User, DB Table name = user
 @Table(name = "users")
@@ -26,7 +17,8 @@ public class User {
 	private List<Account> accounts = new ArrayList<>();
 	private Address address;
 	
-	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	public Long getUserId() {
 		return userId;
 	}

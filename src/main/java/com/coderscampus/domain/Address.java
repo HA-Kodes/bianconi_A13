@@ -1,11 +1,6 @@
-package com.coderscampus.assignment13.domain;
+package com.coderscampus.domain;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.MapsId;
-import javax.persistence.OneToOne;
+import jakarta.persistence.*;
 
 @Entity
 public class Address {

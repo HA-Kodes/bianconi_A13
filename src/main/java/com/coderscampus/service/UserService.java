@@ -1,4 +1,4 @@
-package com.coderscampus.assignment13.service;
+package com.coderscampus.service;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -8,10 +8,10 @@ import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.coderscampus.assignment13.domain.Account;
-import com.coderscampus.assignment13.domain.User;
-import com.coderscampus.assignment13.repository.AccountRepository;
-import com.coderscampus.assignment13.repository.UserRepository;
+import com.coderscampus.domain.Account;
+import com.coderscampus.domain.User;
+import com.coderscampus.repository.AccountRepository;
+import com.coderscampus.repository.UserRepository;
 
 @Service
 public class UserService {

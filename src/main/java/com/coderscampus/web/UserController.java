@@ -1,4 +1,4 @@
-package com.coderscampus.assignment13.web;
+package com.coderscampus.web;
 
 import java.util.Arrays;
 import java.util.Set;
@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import com.coderscampus.assignment13.domain.User;
-import com.coderscampus.assignment13.service.UserService;
+import com.coderscampus.domain.User;
+import com.coderscampus.service.UserService;
 
 @Controller
 public class UserController {

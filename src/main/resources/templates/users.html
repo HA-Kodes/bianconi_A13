@@ -58,22 +58,26 @@
     <!-- Detail view -->
     <div th:if="${#lists.size(users) == 1}">
         <form th:object="${user}" th:action="@{'/users/' + ${user.userId}}" method="post">
-            <input type="text" th:field="*{username}" placeholder="Username" />
-            <input type="password" th:field="*{password}" placeholder="Password" />
-            <input type="text" th:field="*{name}" placeholder="Full Name" />
-
-            <div th:if="${user.address != null}">
-                <input type="text" th:field="*{address.addressLine1}" placeholder="Address Line 1" />
-                <input type="text" th:field="*{address.addressLine2}" placeholder="Address Line 2" />
-                <input type="text" th:field="*{address.city}" placeholder="City" />
-                <input type="text" th:field="*{address.region}" placeholder="Region" />
-                <input type="text" th:field="*{address.country}" placeholder="Country" />
-                <input type="text" th:field="*{address.zipCode}" placeholder="Zip Code" />
-            </div>
-
-            <button type="submit">Update User Account</button>
-        </form>
-
+    <div class="form-row">
+        <input type="text" th:field="*{username}" placeholder="Username" />
+    </div>
+    <div class="form-row">
+        <input type="password" th:field="*{password}" placeholder="Password" />
+    </div>
+    <div class="form-row">
+        <input type="text" th:field="*{name}" placeholder="Full Name" />
+    </div>
+    <!-- Address fields -->
+    <div th:if="${user.address != null}">
+        <div class="form-row"><input type="text" th:field="*{address.addressLine1}" placeholder="Address Line 1" /></div>
+        <div class="form-row"><input type="text" th:field="*{address.addressLine2}" placeholder="Address Line 2" /></div>
+        <div class="form-row"><input type="text" th:field="*{address.city}" placeholder="City" /></div>
+        <div class="form-row"><input type="text" th:field="*{address.region}" placeholder="Region" /></div>
+        <div class="form-row"><input type="text" th:field="*{address.country}" placeholder="Country" /></div>
+        <div class="form-row"><input type="text" th:field="*{address.zipCode}" placeholder="Zip Code" /></div>
+    </div>
+    <button type="submit">Update User Account</button>
+</form>
         <form th:action="@{/users/{userId}/delete(userId=${user.userId})}" method="post">
             <button type="submit">Delete User Account</button>
         </form>

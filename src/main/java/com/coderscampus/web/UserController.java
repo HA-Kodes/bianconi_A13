@@ -11,11 +11,16 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.coderscampus.domain.Account;
 import com.coderscampus.domain.User;
 import com.coderscampus.service.UserService;
+import com.coderscampus.repository.AccountRepository;
 
 @Controller
 public class UserController {
+
+	@Autowired
+	private AccountRepository accountRepo;
 	
 	@Autowired
 	private UserService userService;
@@ -58,12 +63,25 @@ public class UserController {
 	@PostMapping("/users/{userId}")
 	public String postOneUser (@ModelAttribute User user) {
 		userService.saveUser(user);
-		return "redirect:/users/"+user.getUserId();
+		return "redirect:/users/" + user.getUserId();
 	}
-	
+
+	@PostMapping("/users/{userId}/accounts")
+	public String createNewAccount(@PathVariable Long userId) {
+		User user = userService.findById(userId);
+		Account newAccount = new Account();
+		newAccount.setAccountName("New Account");
+		newAccount.getUsers().add(user);
+		user.getAccounts().add(newAccount);
+		accountRepo.save(newAccount);
+		userService.saveUser(user);
+		return "redirect:/users/" + userId;
+	}
+
 	@PostMapping("/users/{userId}/delete")
 	public String deleteOneUser (@PathVariable Long userId) {
 		userService.delete(userId);
 		return "redirect:/users";
 	}
+
 }
